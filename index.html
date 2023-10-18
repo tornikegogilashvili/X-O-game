@@ -26,7 +26,52 @@
             </div>
             <p class="warning">Remember : X goes first</p>
         </div>
+        <button class="new-game-btn cpu-btn" onclick="startGame('cpu')">
+            <h2 class="title btn-text" >NEW GAME (vs CPU)</h2>
+        </button>
+        <button class="new-game-btn player-btn" onclick="startGame('player')">
+            <h2 class="title btn-text">NEW GAME (vs PLAYER)</h2>
+        </button>
     </section>
-    <section id="board"></section>
+    <section id="board">
+        <div class="board-header">
+            <div class="home-header">
+                <img src="./assets/icon-x.svg" alt="x-img">
+                <img src="./assets/icon-o.svg" alt="o-svg">
+            </div>
+            <div class="turn-box">
+                <img src="./assets/icon-x-gray.svg" alt="img" />
+                <h3>TURN</h3>
+            </div>
+            <button class="restart">
+                <img src="./assets/icon-restart.svg" alt="img">
+            </button>
+        </div>
+        <div class="play-area">
+            <div class="play-btn"></div>
+            <div class="play-btn"></div>
+            <div class="play-btn"></div>
+            <div class="play-btn"></div>
+            <div class="play-btn"></div>
+            <div class="play-btn"></div>
+            <div class="play-btn"></div>
+            <div class="play-btn"></div>
+            <div class="play-btn"></div>
+        </div>
+        <div class="statistics">
+            <div class="statistic-box">
+                <h3>X (you)</h3>
+                <span>0</span>
+            </div>
+            <div class="statistic-box">
+                <h3>tries</h3>
+                <span>0</span>
+            </div>
+            <div class="statistic-box">
+                <h3>O (cpu)</h3>
+                <span>0</span>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
