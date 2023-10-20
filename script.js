@@ -89,6 +89,24 @@ const checkXwin = () => {
       modalInfoText.textContent = "OH NO, YOU LOST…";
     }
   };
+  const  winningStyle = (array) => {
+      if(turn === 'x'){
+        playButtons[array[0]].firstElementChild.src = "./assets/icon-x-win.svg"
+        playButtons[array[1]].firstElementChild.src = "./assets/icon-x-win.svg"
+        playButtons[array[2]].firstElementChild.src = "./assets/icon-x-win.svg"
+        playButtons[array[0]].style.background = '#31c3bd'
+        playButtons[array[1]].style.background = '#31c3bd'
+        playButtons[array[2]].style.background = '#31c3bd'
+
+    }else{
+        playButtons[array[0]].firstElementChild.src = "./assets/icon-o-win.svg"
+        playButtons[array[1]].firstElementChild.src = "./assets/icon-o-win.svg"
+        playButtons[array[2]].firstElementChild.src = "./assets/icon-o-win.svg"
+        playButtons[array[0]].style.background = '#f2b137'
+        playButtons[array[1]].style.background = '#f2b137'
+        playButtons[array[2]].style.background = '#f2b137'
+    }
+  }
 
 const onHoverEffects = () => {
     for (let index = 0; index < freeButtons.length; index++) {
@@ -124,6 +142,7 @@ const createClickedFunctions = () => {
                 const win = checkXwin();
                 if(win){
                     onWinX()
+                    winningStyle(win)
                     return 
                 }
                 turn = "o"
@@ -135,6 +154,7 @@ const createClickedFunctions = () => {
                 const win = checkOwin();
                 if(win){
                     onWinO()
+                    winningStyle(win)
                     return 
                 }
                 turn = "x"
