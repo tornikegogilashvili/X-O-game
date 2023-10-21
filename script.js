@@ -6,8 +6,11 @@ const xScoreText = document.querySelector("#x-score-text")
 const oScoreText = document.querySelector("#o-score-text")
 const xScoreElement = document.querySelector("#x-score");
 const oScoreElement = document.querySelector("#o-score");
+const tieScoreElement = document.querySelector("#tie-score")
 const turnInfoImage = document.querySelector(".turn-box");
 const modal = document.querySelector("#modal");
+const modalTie = document.querySelector("#modal-tie");
+const modalRestart = document.querySelector("#modal-restart");
 const modalInfoText = document.querySelector(".result-info-text")
 const modalIcon = document.querySelector(".modal-box img")
 const modalResultText = document.querySelector(".result-text")
@@ -125,6 +128,8 @@ const onHoverEffects = () => {
 
 const createClickedFunctions = () => {
     for (let index = 0; index < playButtons.length; index++) {
+        playButtons[index].style.background = '#1f3641'
+        playButtons[index].innerHTML = '';
         playButtons[index].onclick = (event) => {
             event.target.classList.remove("xHover");
             event.target.classList.remove("oHover");
@@ -145,6 +150,12 @@ const createClickedFunctions = () => {
                     winningStyle(win)
                     return 
                 }
+                if(xArray.length === 5 ){
+                    modalTie.style.display = "flex";
+                    tieScore++;
+                    tieScoreElement.textContent = tieScore;
+
+                }
                 turn = "o"
                 turnInfoImage.src = "./assets/icon-o-gray.svg"
             }else{
@@ -161,7 +172,6 @@ const createClickedFunctions = () => {
                 icon.classList.remove("play-icon");
                 icon.classList.add("margin-right")
                 turnInfoImage.src = "./assets/icon-x-gray.svg"
-
             }
             onHoverEffects();
 
@@ -197,4 +207,64 @@ const startGame = (modeParam) => {
             oScoreText.textContent = "O (YOU)";
         }
     }
+}
+const reset = () => {
+    player1 = "x";
+     mode = "cpu";
+     turn = "x";
+     freeButtons = [0,1,2,3,4,5,6,7,8];
+     xArray = [];
+     oArray = [];
+     modal.style.display = "none";
+     modalTie.style.display = "none";
+
+
+}
+
+const quit = () => {
+    reset();
+    //  player1 = "x";
+    //  mode = "cpu";
+    //  turn = "x";
+    //  freeButtons = [0,1,2,3,4,5,6,7,8];
+    //  xArray = [];
+    //  oArray = [];
+     xScore = 0;
+     tieScore = 0;
+     oScore = 0;
+     board.style.display = 'none';
+     home.style.display = "flex";
+     oScoreElement.textContent = 0;
+     xScoreElement.textContent = 0;
+     tieScoreElement.textContent = 0;
+
+}
+
+
+
+const nextRound = () => {
+    reset();
+    startGame(mode);
+}
+
+const openRestartModal = () => {
+    modalRestart.style.display = 'flex';
+}
+
+const closeModal = () => {
+    modalRestart.style.display = 'none';
+
+}
+const restartFc = () => {
+   
+     xScore = 0;
+     tieScore = 0;
+     oScore = 0;
+     oScoreElement.textContent = 0;
+     xScoreElement.textContent = 0;
+     tieScoreElement.textContent = 0;
+    reset();
+    startGame(mode);
+    modalRestart.style.display = 'none';
+
 }

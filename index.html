@@ -16,8 +16,30 @@
                 <p class="result-text">takes the round</p>
             </div>
             <div class="result-button">
-                <button class="quit-btn">quit</button>
-                <button class="next-round-btn">next round</button>
+                <button class="quit-btn" onclick="quit()">quit</button>
+                <button class="next-round-btn" onclick="nextRound()">next round</button>
+            </div>
+        </div>
+    </div>
+    <div id="modal-tie">
+        <div class="modal-box">
+            <div>
+                <p class="result-text">ROUND TIED</p>
+            </div>
+            <div class="result-button">
+                <button class="quit-btn" onclick="quit()">quit</button>
+                <button class="next-round-btn" onclick="nextRound()">next round</button>
+            </div>
+        </div>
+    </div>
+    <div id="modal-restart">
+        <div class="modal-box">
+            <div>
+                <p class="result-text">RESTART GAME</p>
+            </div>
+            <div class="result-button">
+                <button class="quit-btn" onclick="closeModal()">NO, CANCEL</button>
+                <button class="next-round-btn" onclick="restartFc()">YES, RESTART</button>
             </div>
         </div>
     </div>
@@ -56,7 +78,7 @@
                 <img src="./assets/icon-x-gray.svg" alt="img" />
                 <h3>TURN</h3>
             </div>
-            <button class="restart">
+            <button class="restart" onclick="openRestartModal()">
                 <img src="./assets/icon-restart.svg" alt="img">
             </button>
         </div>
@@ -78,7 +100,7 @@
             </div>
             <div class="statistic-box">
                 <h3>tries</h3>
-                <span>0</span>
+                <span id="tie-score">0</span>
             </div>
             <div class="statistic-box">
                 <h3 id="o-score-text">O (cpu)</h3>
